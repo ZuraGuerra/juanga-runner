@@ -11,6 +11,7 @@ var startJuanga;
 var startJuangaTween;
 var startText;
 var firstBuilding;
+var juanga;
 
 /***********************
 ***** PRELOAD
@@ -103,6 +104,7 @@ function startScreenHandler() {
 function preloadGame() {
 
   game.load.image('firstBuilding', 'http://vignette2.wikia.nocookie.net/disney/images/e/e2/Building_small_menu.png/revision/latest?cb=20130804225344');
+  game.load.image('juanga', 'http://rs1263.pbsrc.com/albums/ii631/Pokemon-Vampire-Knight-lover/pikachu_.gif~c200');
 
 }
 
@@ -110,5 +112,6 @@ function startGame() {
 
   game.world.removeAll()
   firstBuilding = game.add.sprite(200, 50, 'firstBuilding');
+  juanga = game.add.sprite(300, 150, 'juanga');
 
 }
