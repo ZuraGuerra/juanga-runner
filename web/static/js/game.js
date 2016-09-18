@@ -25,6 +25,8 @@ function preload() {
 
 function create() {
 
+    drawStartText();
+
     startJuanga = game.add.sprite(-600, 30, 'startJuanga');
     startJuangaTween = game.add.tween(startJuanga);
 
@@ -39,22 +41,28 @@ function create() {
 
     game.stage.setBackgroundColor(0x2d2d2d);
 
-    startText = game.add.text(game.world.centerX, game.world.centerY, "PRESS TO START", {
-        font: "65px Arial",
-        fill: "#ff0044",
-        align: "center"
-    });
-
-    startText.anchor.setTo(0.5, 0.5);
-
 }
 
 function update() {
 
     startJuanga.anchor.setTo(0.7, 0);
-
+    if (startJuanga.x > 650) {
+      startText.visible = true;
+    }
     game.input.onDown.addOnce(startGame, this);
 
+}
+
+function drawStartText() {
+
+  startText = game.add.text(game.world.centerX, game.world.centerY, "PRESS TO START", {
+      font: "40px Arial",
+      fill: "#ff0044",
+      align: "left"
+  });
+
+  startText.anchor.setTo(0.9, 0.5);
+  startText.visible = false;
 }
 
 function startGame() {
