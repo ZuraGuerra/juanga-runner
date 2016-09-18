@@ -83,6 +83,8 @@ function drawStartText() {
   startText.anchor.setTo(0.9, 0.5);
   startText.visible = false;
 
+  game.input.onDown.addOnce(startGame, this);
+
 }
 
 function drawStartJuanga() {
@@ -97,7 +99,6 @@ function startScreenHandler() {
 
   startJuanga.anchor.setTo(0.7, 0);
   if (startJuanga.x > 650) { startText.visible = true; }
-  game.input.onDown.addOnce(startGame, this);
 
 }
 
@@ -115,6 +116,8 @@ function preloadGame() {
 function startGame() {
 
   game.world.removeAll()
+  game.input.onDown.add(juangaJump, this);
+
   firstBuilding = game.add.sprite(200, 50, 'firstBuilding');
   firstBuildingTween = game.add.tween(firstBuilding);
   firstBuildingTween.to({ x: 700 }, 5000, 'Linear', true, 0);
@@ -122,8 +125,6 @@ function startGame() {
   juanga = game.add.sprite(300, 150, 'juanga');
   juangaTween = game.add.tween(juanga);
   juangaTween.to({ x: 700 }, 5000, 'Linear', true, 0);
-
-  game.input.onDown.addOnce(juangaJump, this);
 
 }
 
@@ -133,6 +134,6 @@ function startGame() {
 
 function juangaJump() {
 
-  juanga.y = 100;
+  juanga.y += 100;
 
 }
