@@ -10,6 +10,7 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload:
 var startJuanga;
 var startJuangaTween;
 var startText;
+var firstBuilding;
 
 /***********************
 ***** PRELOAD
@@ -19,6 +20,7 @@ function preload() {
 
   game.forceSingleUpdate = true;
   preloadStartScreen();
+  preloadGame();
 
 }
 
@@ -75,6 +77,7 @@ function drawStartText() {
 
   startText.anchor.setTo(0.9, 0.5);
   startText.visible = false;
+
 }
 
 function drawStartJuanga() {
@@ -93,9 +96,19 @@ function startScreenHandler() {
 
 }
 
+/***********************
+***** GAME
+************************/
+
+function preloadGame() {
+
+  game.load.image('firstBuilding', 'http://vignette2.wikia.nocookie.net/disney/images/e/e2/Building_small_menu.png/revision/latest?cb=20130804225344');
+
+}
+
 function startGame() {
 
-  startText.style.fill = "blue";
-  startText.setText(startText.text);
+  game.world.removeAll()
+  firstBuilding = game.add.sprite(200, 50, 'firstBuilding');
 
 }
