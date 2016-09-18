@@ -10,8 +10,12 @@ var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload:
 var startJuanga;
 var startJuangaTween;
 var startText;
+
 var firstBuilding;
+var firstBuildingTween;
+
 var juanga;
+var juangaTween;
 
 /***********************
 ***** PRELOAD
@@ -98,7 +102,7 @@ function startScreenHandler() {
 }
 
 /***********************
-***** GAME
+***** GAME SCREEN
 ************************/
 
 function preloadGame() {
@@ -112,6 +116,23 @@ function startGame() {
 
   game.world.removeAll()
   firstBuilding = game.add.sprite(200, 50, 'firstBuilding');
+  firstBuildingTween = game.add.tween(firstBuilding);
+  firstBuildingTween.to({ x: 700 }, 5000, 'Linear', true, 0);
+
   juanga = game.add.sprite(300, 150, 'juanga');
+  juangaTween = game.add.tween(juanga);
+  juangaTween.to({ x: 700 }, 5000, 'Linear', true, 0);
+
+  game.input.onDown.addOnce(juangaJump, this);
+
+}
+
+/***********************
+***** GAME MECHANICS
+************************/
+
+function juangaJump() {
+
+  juanga.y = 100;
 
 }
