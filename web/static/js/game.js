@@ -1,9 +1,12 @@
-
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload,
+                                                                        create: create,
+                                                                        update: update,
+                                                                        render: render });
 var tween;
 var prev = -400;
 var t = Date.now();
 var sprite;
+var startText;
 
 function preload() {
 
@@ -15,7 +18,7 @@ function preload() {
     //  string by which we'll identify the image later in our code.
 
     //  The second parameter is the URL of the image (relative)
-    game.load.image('einstein', 'assets/pics/ra_einstein.png');
+    game.load.image('einstein', 'http://www.juangabriel.cl/images/img0026.png');
     // game.load.image('einstein', 'assets/sprites/chunk.png');
 }
 
@@ -36,6 +39,16 @@ function create() {
     //  And this starts it going
     // tween.start();
 
+    game.stage.setBackgroundColor(0x2d2d2d);
+
+    startText = game.add.text(game.world.centerX, game.world.centerY, "PRESS TO START", {
+        font: "65px Arial",
+        fill: "#ff0044",
+        align: "center"
+    });
+
+    startText.anchor.setTo(0.5, 0.5);
+
 }
 
 function update() {
@@ -45,6 +58,13 @@ function update() {
         // sprite.x += 4;
     }
 
+    game.input.onDown.addOnce(startGame, this);
+
+}
+
+function startGame() {
+    startText.style.fill = "blue";
+    startText.setText(startText.text);
 }
 
 function render() {
