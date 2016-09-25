@@ -39,6 +39,7 @@ function create() {
   drawStartJuanga();
 
   game.stage.setBackgroundColor(0x2d2d2d);
+  game.physics.startSystem(Phaser.Physics.ARCADE);
 
 }
 
@@ -126,6 +127,11 @@ function startGame() {
   juanga = game.add.sprite(300, 150, 'juanga');
   juangaTween = game.add.tween(juanga);
   juangaTween.to({ x: 700 }, 5000, 'Linear', true, 0);
+
+  game.physics.arcade.enable(juanga);
+  juanga.body.bounce.y = 0.2;
+  juanga.body.gravity.y = 300;
+  juanga.body.collideWorldBounds = true;
   juanga.body.velocity.x = 0;
 
 }
@@ -137,5 +143,6 @@ function startGame() {
 function juangaJump() {
 
   juanga.body.velocity.y = -350;
+  juanga.body.velocity.x = -150;
 
 }
