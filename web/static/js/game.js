@@ -134,6 +134,7 @@ function startGame() {
 
 function juangaJump() {
 
-  juanga.y += 100;
+  juanga.y = juanga.y - 50;
+  juanga.x = juanga.x - 50;
 
 }
