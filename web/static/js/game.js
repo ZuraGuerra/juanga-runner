@@ -116,6 +116,7 @@ function preloadGame() {
 function startGame() {
 
   game.world.removeAll()
+  game.input.onDown.remove(startGame, this);
   game.input.onDown.add(juangaJump, this);
 
   firstBuilding = game.add.sprite(200, 50, 'firstBuilding');
@@ -125,6 +126,7 @@ function startGame() {
   juanga = game.add.sprite(300, 150, 'juanga');
   juangaTween = game.add.tween(juanga);
   juangaTween.to({ x: 700 }, 5000, 'Linear', true, 0);
+  juanga.body.velocity.x = 0;
 
 }
 
@@ -134,7 +136,6 @@ function startGame() {
 
 function juangaJump() {
 
-  juanga.y = juanga.y - 50;
-  juanga.x = juanga.x - 50;
+  juanga.body.velocity.y = -350;
 
 }
